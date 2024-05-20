@@ -1,0 +1,51 @@
+<div class="container">
+  <form class="form-inline">      
+    <div class="form-group mx-sm-3 mb-2 mt-2 "> 
+    <label>Nom Bijoux en tapant</label> 
+    <input type="text" #nom [(ngModel)]="searchTerm"  name="searchTerm" class="form-control" >  
+    </div> 
+    </form> 
+
+  <!--form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2 mt-2 ">
+      <label>Nom Bijoux en tapant</label>
+      <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
+    </div>
+  </!--form!-->
+
+  <!--form class="form-inline">      
+    <div class="form-group mx-sm-3 mb-2 mt-2 "> 
+    <label>Nom Bijoux</label> 
+    <input type="text" class="form-control" [(ngModel)]="nomBijoux" name="nomBijoux" class="form-control"> 
+    <button type="submit" (click)="rechercherProds()" class="btn btn-primary mb-2 ml-2">Rechercher</button> 
+    </div> 
+    </!--form!-->
+
+
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Date Création</th>
+            <th>Marque</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let b of bijoux | searchFilter: searchTerm ">
+          <tr>
+            <td>{{b.idBijoux}}</td>
+            <td>{{b.nomBijoux}}</td>
+            <td>{{b.prix}}</td>
+            <td>{{b.dateCreation | date:'dd/MM/yyyy'}}</td>
+            <td>{{b.marque.nomMar}}</td>
+            <!--  <td><a class="btn btn-danger" (click)="supprimerbijoux(bijoux)">Supprimer</a></td>
+                      <td><a class="btn btn-success" [routerLink]="['/updatebijoux',bijoux.idbijoux]">Modifier</a></td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

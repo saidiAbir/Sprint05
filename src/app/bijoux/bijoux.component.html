@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID Bijoux</th>
+            <th>Nom Bijoux</th>
+            <th>Prix Bijoux</th>
+            <th>Date de Creation</th>
+            <th>Marque</th>
+
+          </tr>
+        </thead>
+        <tbody *ngFor="let bijoux of bijoux">
+          <tr>
+            <td>{{bijoux.idBijoux}}</td>
+            <td>{{bijoux.nomBijoux}}</td>
+            <td>{{bijoux.prix}}</td>
+            <td>{{bijoux.dateCreation | date:'dd/MM/yyyy'}}</td>
+            <td>{{bijoux.marque.nomMar}}</td>
+            <td> <a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="suppBijoux(bijoux)"> supprimer</a>
+            </td>
+            <td>
+              <a *ngIf="authService.isAdmin()" class="btn btn-success"
+                [routerLink]="['/updateBijoux',bijoux.idBijoux]">Modifier</a>
+            </td>
+
+
+
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
